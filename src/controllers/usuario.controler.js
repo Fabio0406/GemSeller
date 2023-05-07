@@ -6,13 +6,34 @@ import Modificar from "../lib/modificar.js";
 import busqueda from "../lib/busquedas.js";
 import helprs from "../lib/helpers.js"
 import Listar from "../lib/mostrar.js";
+import multer from 'multer';
+
 
 export const showHA = async (req, res) => {    
     res.render('homeA',{ Imagen: "images/logo2.jpg"});
 };
 
-export const showH = async (req, res) => {    
-    res.render('home',{ Imagen: "images/logo2.jpg"});
+
+export const Fprod = async(req,res) => {
+    const cat = await pool.query("SELECT * FROM categoria")
+  const Cant = cat.rowCount
+  const Dcat = cat.rows
+    res.render('FormProducto',{Cant,Dcat})
+}
+
+
+export const FSend = async(req,res) => {
+    const {nombre, precio, descripcion, categoria} = req.body
+    const imagen = req.file.filename
+    await pool.query("INSERT INTO producto (nombre, precio, descripcion, id_categoria, imagen)VALUES ($1,$2,$3,$4,$5)",[nombre, precio, descripcion, categoria,imagen])
+    res.redirect('/')
+}
+
+export const showH = async (req, res) => {  
+    const producto = await pool.query("SELECT * FROM producto")
+  const Cant = producto.rowCount
+  const DPro = producto.rows
+    res.render('home',{ Cant,DPro });
 };
 export const insertarUsuario = async (req, res) => {    
     res.render('formulario');

@@ -1,6 +1,8 @@
 import { pool } from "../db.js";
 const Listar = {}
 
+
+
 Listar.Pacientes= async() => {
     try {
         const Result =  await pool.query('Select user,usuario.nombre,edad,sexo,date_format(fechaNac, "%d-%m-%Y") as fechaNac,correo,ocupacion.nombre as idOcupacion,telefono from usuario,paciente,ocupacion where user = usuario and idOcupacion = ocupacion.id');

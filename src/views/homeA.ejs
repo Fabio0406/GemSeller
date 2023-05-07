@@ -45,106 +45,40 @@
 	
 	
 </head>
-<body class="js">
-	
-	<!-- Preloader -->
-	<div class="preloader">
-		<div class="preloader-inner">
-			<div class="preloader-icon">
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	</div>
-	<!-- End Preloader -->
-	
-	
+<body>	
 	<!-- Header -->
 	<header class="header shop">
 		<!-- Topbar -->
-		<div class="topbar">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-5 col-md-12 col-12">
-						
-					</div>
-					<div class="col-lg-7 col-md-12 col-12">
-						<!-- Top Right -->
-						<div class="right-content">
-							<ul class="list-main">
-								<%- include('./Barsup'); %>
-							</ul>
-						</div>
-						<!-- End Top Right -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Topbar -->
-		<div class="middle-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-12">
-						<!-- Logo -->
-						<!--/ End Logo -->
-						
-						<div class="mobile-nav"></div>
-					</div>
-					<div class="col-lg-8 col-md-7 col-12">
-						<div class="logo">
-							<a href="/"><img src="<%= Imagen %>" alt="logo"></a>
-						</div>
-						
-					</div>
-					<div class="col-lg-2 col-md-3 col-12">
-						<div class="right-bar">
-							<!-- Search Form -->
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<%- include('./Barsup'); %>					
+		<!-- End Topbar -->		
 		<!-- Header Inner -->
 		<div class="header-inner">
 			<div class="container">
 				<div class="cat-nav-head">
-					<div class="row">
-						<div class="col-lg-3">
-							<div class="all-category">
-								<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>Opciones</h3>
-								
-							</div>
-						</div>
-						<div class="col-lg-9 col-12">
-							<div class="menu-area">
-								<!-- Main Menu -->
+					<div class="row">						
+						<div class="col-12">
+							<div class="menu-area">								
 								<nav class="navbar navbar-expand-lg">
 									<div class="navbar-collapse">	
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
-                                                    <li class="active"><a href="#">Añadir un Producto</a></li>
-                                                    <li class="active"><a href="#">Inventario</a></li>
-                                                    <li class="active"><a href="#">Reportes</a></li>													
+													<li ><a href="#">Home</a></li>
+                                                    <li ><a href="#">Añadir un Producto</a></li>
+													<li ><a href="#">Añadir Categoria</a></li>
+													<li ><a href="#">New Admin</a></li>
+                                                    <li ><a href="#">Ordenes</a></li>
+													<li ><a href="#">Inventario</a></li>
+                                                    <li ><a href="#">Reportes</a></li>													
 												</ul>
 										</div>
 									</div>
 								</nav>
-								<!--/ End Main Menu -->	
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!--/ End Header Inner -->
 	</header>
 	<!--/ End Header -->
 	

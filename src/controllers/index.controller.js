@@ -1,8 +1,16 @@
 import { pool } from "../db.js";
 import passport from 'passport';
+import Listar from "../lib/mostrar.js";
 
-export const slash = (req, res) => {
-  res.render('index.ejs', { Imagen: "images/logo2.jpg"});
+export const slash = async (req, res) => {
+  const producto = await pool.query("SELECT * FROM producto")
+  const Cant = producto.rowCount
+  const DPro = producto.rows
+
+  const Cate = await pool.query("SELECT * FROM categoria")
+  const CantC = Cate.rowCount
+  const DCate = Cate.rows
+  res.render('index.ejs', { Imagen: "images/logo2.jpg" , Cant , DPro, CantC,DCate });
 };
 
 //para mostrar los imputs de login

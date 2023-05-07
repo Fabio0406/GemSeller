@@ -2,6 +2,7 @@ import express from "express";
 
 //rutas 
 
+import api from "./routes/api.js";
 import indexRoutes from "./routes/index.routes.js";
 
 
@@ -12,12 +13,14 @@ import bodyParser from "body-parser";
 import flash from 'connect-flash';
 import passport from 'passport';
 import session from 'express-session';
-
+import cors from 'cors'
 
 //import MysqlStore from 'express-mysql-session';
 
 import './lib/passport.js'
 import router from "./routes/usuario.routes.js";
+import prod from "./routes/Producto.js";
+import carrito from "./routes/carrito.js";
 
 // import {
 //     DB_DATABASE,
@@ -35,7 +38,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-
+app.use(cors())
 app.use(flash());
 app.use(express.json());
 app.use(morgan('dev'));
@@ -83,5 +86,8 @@ app.use(express.static(join(__dirname, 'public')))
 
 app.use(indexRoutes);
 app.use(router)
+app.use(prod)
+app.use(api)
+app.use(carrito)
 
 export default app;
