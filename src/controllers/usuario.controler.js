@@ -17,7 +17,7 @@ export const showHA = async (req, res) => {
   const Cate = await pool.query("SELECT * FROM categoria")
   const CantC = Cate.rowCount
   const DCate = Cate.rows
-    res.render('index',{ Imagen: "images/logo2.jpg",CantC,DCate,Cant,DPro });
+    res.render('index',{ Imagen: "images/Logo2.jpg",CantC,DCate,Cant,DPro });
 };
 
 
@@ -28,6 +28,13 @@ export const Fprod = async(req,res) => {
     res.render('FormProducto',{Cant,Dcat})
 }
 
+export const Fcate = async(req,res) => {
+    const cat = await pool.query("SELECT * FROM categoria")
+  const Cant = cat.rowCount
+  const Dcat = cat.rows
+    res.render('categorias',{Cant,Dcat})
+}
+
 
 export const FSend = async(req,res) => {
     const {nombre, precio, descripcion, categoria} = req.body
@@ -35,6 +42,66 @@ export const FSend = async(req,res) => {
     await pool.query("INSERT INTO producto (nombre, precio, descripcion, id_categoria, imagen)VALUES ($1,$2,$3,$4,$5)",[nombre, precio, descripcion, categoria,imagen])
     res.redirect('/')
 }
+
+export const Render1 = async(req,res) => {
+    const producto = await pool.query("SELECT * FROM producto where id_categoria = 1")
+    const Cant = producto.rowCount
+    const DPro = producto.rows
+    const Cate = await pool.query("SELECT * FROM categoria")
+    const CantC = Cate.rowCount
+    const DCate = Cate.rows    
+    res.render('index',{ Imagen: "images/Logo2.jpg",CantC,DCate,Cant,DPro })
+}
+
+export const Render2 = async(req,res) => {
+    const producto = await pool.query("SELECT * FROM producto where id_categoria = 2")
+    const Cant = producto.rowCount
+    const DPro = producto.rows
+    const Cate = await pool.query("SELECT * FROM categoria")
+    const CantC = Cate.rowCount
+    const DCate = Cate.rows    
+    res.render('index',{ Imagen: "images/Logo2.jpg",CantC,DCate,Cant,DPro })
+}
+
+export const Render3 = async(req,res) => {
+    const producto = await pool.query("SELECT * FROM producto where id_categoria = 3")
+    const Cant = producto.rowCount
+    const DPro = producto.rows
+    const Cate = await pool.query("SELECT * FROM categoria")
+    const CantC = Cate.rowCount
+    const DCate = Cate.rows    
+    res.render('index',{ Imagen: "images/Logo2.jpg",CantC,DCate,Cant,DPro })
+}
+export const Render4 = async(req,res) => {
+    const producto = await pool.query("SELECT * FROM producto where id_categoria = 4")
+    const Cant = producto.rowCount
+    const DPro = producto.rows
+    const Cate = await pool.query("SELECT * FROM categoria")
+    const CantC = Cate.rowCount
+    const DCate = Cate.rows    
+    res.render('index',{ Imagen: "images/Logo2.jpg",CantC,DCate,Cant,DPro })
+}
+export const Render5 = async(req,res) => {
+    const producto = await pool.query("SELECT * FROM producto where id_categoria = 5")
+    const Cant = producto.rowCount
+    const DPro = producto.rows
+    const Cate = await pool.query("SELECT * FROM categoria")
+    const CantC = Cate.rowCount
+    const DCate = Cate.rows    
+    res.render('index',{ Imagen: "images/Logo2.jpg",CantC,DCate,Cant,DPro })
+}
+export const Render6 = async(req,res) => {
+    const producto = await pool.query("SELECT * FROM producto where id_categoria = 6")
+    const Cant = producto.rowCount
+    const DPro = producto.rows
+    const Cate = await pool.query("SELECT * FROM categoria")
+    const CantC = Cate.rowCount
+    const DCate = Cate.rows    
+    res.render('index',{ Imagen: "images/Logo2.jpg",CantC,DCate,Cant,DPro })
+}
+
+
+
 
 export const showH = async (req, res) => {  
     const producto = await pool.query("SELECT * FROM producto")

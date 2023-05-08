@@ -64,11 +64,10 @@
                                         <ul class="nav main-menu menu navbar-nav">
                                                 <li ><a href="/home">Home</a></li>
                                                 <li ><a href="/formP">Añadir un Producto</a></li>
-                                                <li ><a href="#">Añadir Categoria</a></li>
+                                                <li ><a href="/formC">Añadir Categoria</a></li>
                                                 <li ><a href="#">New Admin</a></li>
                                                 <li ><a href="#">Ordenes</a></li>
-                                                <li ><a href="#">Inventario</a></li>
-                                                <li ><a href="#">Reportes</a></li>													
+                                                <li ><a href="/repotes">Reportes</a></li>													
                                             </ul>
                                     </div>
                                 </div>
@@ -86,7 +85,7 @@
                                     <ul class="nav main-menu menu navbar-nav">
                                         <li class="active"><a href="/home">Home</a></li>
                                         <% for (let i=0; i < CantC ; i++) { %>
-                                        <li ><a href="#"><%= DCate[i].nombre %></a></li>
+                                        <li><a href="/<%= DCate[i].nombre %>" ><%= DCate[i].nombre %></a></li>
                                         <% } %>																									
                                     </ul>												
                                 </div>											
