@@ -19,7 +19,13 @@ export const Fprod = async(req,res) => {
     const cat = await pool.query("SELECT * FROM categoria")
   const Cant = cat.rowCount
   const Dcat = cat.rows
-    res.render('FormProducto',{Cant,Dcat})
+  const prod = await pool.query("SELECT producto.nombre,producto.precio,producto.descripcion,inventario.cantidad_disponible,categoria.nombre as categoriaN FROM producto,inventario,categoria where inventario.id_producto = producto.id_producto and producto.id_categoria = categoria.id_categoria")
+  const CantP = prod.rowCount
+  const DcatP = prod.rows
+  
+  console.log(DcatP)
+  
+    res.render('FormProducto',{Cant,Dcat,CantP,DcatP})
 }
 
 export const Fcate = async(req,res) => {
@@ -112,9 +118,26 @@ export const insertarUsuario = async (req, res) => {
     res.render('formulario');
 };
 
+export const insertarAdmin = async (req, res) => {    
+    res.render('formAd');
+};
+
 export const addUser = async (req,res) => {
     try {
         const idRol = 2;        
+        const {Usuario, nombre, correo_electronico, contrasena, direccion, telefono} = req.body; // obtengo todos los datps desde el formulario
+        const Ncontrasena = await helprs.encriptar(contrasena); // encripto la contraseña
+        const e = await pool.query('INSERT INTO cliente (Usuario, nombre, correo_electronico, contrasena, direccion, telefono, idRol) VALUES($1,$2,$3,$4,$5,$6,$7)', [Usuario, nombre, correo_electronico, Ncontrasena, direccion, telefono, idRol]);// inserto el usuario
+        res.redirect('/login')
+    } catch (e) {
+        return res.redirect('/form')      
+        
+    }
+}
+
+export const addAdmin = async (req,res) => {
+    try {
+        const idRol = 1;        
         const {Usuario, nombre, correo_electronico, contrasena, direccion, telefono} = req.body; // obtengo todos los datps desde el formulario
         const Ncontrasena = await helprs.encriptar(contrasena); // encripto la contraseña
         const e = await pool.query('INSERT INTO cliente (Usuario, nombre, correo_electronico, contrasena, direccion, telefono, idRol) VALUES($1,$2,$3,$4,$5,$6,$7)', [Usuario, nombre, correo_electronico, Ncontrasena, direccion, telefono, idRol]);// inserto el usuario

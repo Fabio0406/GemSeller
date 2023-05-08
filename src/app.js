@@ -22,6 +22,7 @@ import router from "./routes/usuario.routes.js";
 import prod from "./routes/Producto.js";
 import carrito from "./routes/carrito.js";
 import helpers from "./lib/helpers.js";
+import reportes from "./routes/reportes.routes.js";
 
 // import {
 //     DB_DATABASE,
@@ -92,5 +93,6 @@ app.use(router)
 app.use(prod)
 app.use(api)
 app.use(carrito)
+app.use(reportes)
 
 export default app;

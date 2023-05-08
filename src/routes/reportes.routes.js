@@ -8,9 +8,9 @@ import {
     logeado,
     logeadoA
 } from "../lib/privado.js";
-const router = Router();
+const reportes = Router();
 
 
-router.get('/reportes', logeado, renderVistaReportes); 
-router.get('/getreportepdf/:valor', logeado, generarPDF);
-export default router;
+reportes.get('/reportes', logeadoA, renderVistaReportes); 
+reportes.get('/getreportepdf/:valor', logeadoA, generarPDF);
+export default reportes;

@@ -3,7 +3,9 @@ import { insertarUsuario,
     addUser, 
     
     showHA,
-    showH
+    showH,
+    addAdmin,
+    insertarAdmin
 } from "../controllers/usuario.controler.js";
 
 
@@ -17,6 +19,8 @@ router.get('/home',logeado,showH)
 
 router.get("/form", insertarUsuario);
 router.post('/form', addUser);
+router.get('/formAd', insertarAdmin);
+router.post('/formAd', addAdmin);
 
 
 

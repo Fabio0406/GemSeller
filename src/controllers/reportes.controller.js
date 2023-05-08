@@ -6,7 +6,7 @@ export const renderVistaReportes = (req, res) => {
     {tipo: "Envios", valor: 2},
     
   ];
-  res.render("reportes/reportes.ejs", { rep });
+  res.render("reportes", { rep });
 };
 
 export const generarPDF = async (req, res) => {
