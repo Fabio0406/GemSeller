@@ -48,7 +48,7 @@
 
 
 </head>
-
+<% if(!VerAd) { %>
 <body class="js">
 
 	<!-- Preloader -->
@@ -61,92 +61,17 @@
 		</div>
 	</div>
 	<!-- End Preloader -->
-
+<% } %>
 
 	<!-- Header -->
 	<header class="header shop">
 		<%- include('./Barsup'); %>
 			<!-- End Topbar -->
-			<div class="middle-inner">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-2 col-md-2 col-12">
-							<!-- Logo -->
-							<!--/ End Logo -->
-
-							<div class="mobile-nav"></div>
-						</div>
-						<div class="col-lg-8 col-md-7 col-12">
-							<div class="logo">
-								<a href="/"><img src="<%= Imagen %>" alt="logo"></a>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-3 col-12">
-							<div class="right-bar">
-								<!-- Search Form -->						
-								<!--CARRITO-->
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Header Inner -->
-			<div class="header-inner">				
-				<div class="container">
-					<div class="cat-nav-head">
-						<div class="right-bar">
-							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon "><i class="ti-bag"></i> <span
-										class="total-count cart-number">0</span></a><!--llegada de items-->
-								<!-- Shopping Item -->
-								<div class="shopping-item">
-									<div class="dropdown-cart-header Nitem">
-										<!--Llegada de items-->
-										<a href="#">View Cart</a>
-									</div>
-									<ul class="shopping-list cartRows"><!--Listado de items-->
-																				
-									</ul>
-									<div class="bottom">
-										<div class="total">
-											<span>Total</span>
-											<span class="total-amount">$134.00</span>
-										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
-									</div>
-								</div>
-								<!--/ End Shopping Item -->
-							</div>
-						</div>
-						<div class="row">														
-							<div class="col-lg-9 col-12">
-								<div class="menu-area">
-									<!-- Main Menu -->
-									<nav class="navbar navbar-expand-lg">
-										<div class="navbar-collapse">
-											<div class="nav-inner">
-												<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
-													<% for (let i=0; i < CantC ; i++) { %>
-													<li ><a href="#"><%= DCate[i].nombre %></a></li>
-													<% } %>																									
-												</ul>												
-											</div>											
-										</div>										
-									</nav>
-									<!--/ End Main Menu -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--/ End Header Inner -->
-	</header>
+			<%- include('./BarNav'); %>
 	<!--/ End Header -->
 
 	<!-- Slider Area -->
+	<% if(!VerAd) { %>
 	<section class="hero-slider">
 		<!-- Single Slider -->
 		<div class="single-slider">
@@ -175,6 +100,7 @@
 		</div>
 		<!--/ End Single Slider -->
 	</section>
+	
 	<!--/ End Slider Area -->
 
 	<!-- Start Small Banner  -->
@@ -384,6 +310,7 @@
 			</div>
 		</div>
 	</footer>
+	<% } %>
 	<!-- /End Footer Area -->
 
 	<!-- Jquery -->
@@ -419,7 +346,7 @@
 	<!-- Active JS -->
 	<script src="js/scripts.js"></script>
 
-	<script type="module" src="js/cart.js"></script>
+	<script src="js/cart.js"></script>
 </body>
 
 </html>

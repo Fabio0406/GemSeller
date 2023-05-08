@@ -13,7 +13,10 @@ window.addEventListener("load", function () {
  
   /* Numero del carrito */
   let cartNumber = document.querySelector(".cart-number");
-  cartNumber.innerText = productosEnElCarrito();
+  if(cartNumber){
+    cartNumber.innerText = productosEnElCarrito();
+  }
+  
 
   /* Selecciono todos los productos de la página */
   let productos = document.querySelectorAll(".agregar_carrito");

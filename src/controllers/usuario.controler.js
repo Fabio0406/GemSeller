@@ -10,7 +10,14 @@ import multer from 'multer';
 
 
 export const showHA = async (req, res) => {    
-    res.render('homeA',{ Imagen: "images/logo2.jpg"});
+    const producto = await pool.query("SELECT * FROM producto")
+  const Cant = producto.rowCount
+  const DPro = producto.rows
+
+  const Cate = await pool.query("SELECT * FROM categoria")
+  const CantC = Cate.rowCount
+  const DCate = Cate.rows
+    res.render('index',{ Imagen: "images/logo2.jpg",CantC,DCate,Cant,DPro });
 };
 
 
@@ -33,7 +40,12 @@ export const showH = async (req, res) => {
     const producto = await pool.query("SELECT * FROM producto")
   const Cant = producto.rowCount
   const DPro = producto.rows
-    res.render('home',{ Cant,DPro });
+
+  const Cate = await pool.query("SELECT * FROM categoria")
+  const CantC = Cate.rowCount
+  const DCate = Cate.rows
+  
+    res.render('index',{ Imagen: "images/logo2.jpg"  ,CantC,DCate,Cant,DPro });
 };
 export const insertarUsuario = async (req, res) => {    
     res.render('formulario');

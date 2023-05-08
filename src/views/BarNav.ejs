@@ -1,0 +1,103 @@
+<% if(!VerAd) { %>
+<div class="middle-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-12">
+                <!-- Logo -->
+                <!--/ End Logo -->
+
+                <div class="mobile-nav"></div>
+            </div>
+            <div class="col-lg-8 col-md-7 col-12">
+                <div class="logo">
+                    <a href="/"><img src="<%= Imagen %>" alt="logo"></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-12">
+                <div class="right-bar">
+                    <!-- Search Form -->						
+                    <!--CARRITO-->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+<!-- Header Inner -->
+<div class="header-inner">				
+    <div class="container">
+        <div class="cat-nav-head">
+            <% if(!VerAd) { %>
+            <div class="right-bar">
+                <div class="sinlge-bar shopping">
+                    <a href="/Mycarrito" class="single-icon "><i class="ti-bag"></i> <span
+                            class="total-count cart-number">0</span></a><!--llegada de items-->
+                    <!-- Shopping Item -->
+                    <div class="shopping-item">
+                        <div class="dropdown-cart-header Nitem">
+                            <!--Llegada de items-->
+                            <a href="/Mycarrito">View Cart</a>
+                        </div>
+                        <ul class="shopping-list Listcart"><!--Listado de items-->
+                                                                    
+                        </ul>
+                        <div class="bottom">
+                            <div class="total">
+                                <span>Total</span>
+                                <span class="total-amount">$134.00</span>
+                            </div>
+                            <a href="checkout.html" class="btn animate">Checkout</a>
+                        </div>
+                    </div>
+                    <!--/ End Shopping Item -->
+                </div>
+            </div>
+            <% } %>
+            <div class="row">
+                <% if(VerAd) { %>
+                    <div class="col-12">
+                        <div class="menu-area">								
+                            <nav class="navbar navbar-expand-lg">
+                                <div class="navbar-collapse">	
+                                    <div class="nav-inner">	
+                                        <ul class="nav main-menu menu navbar-nav">
+                                                <li ><a href="/home">Home</a></li>
+                                                <li ><a href="#">Añadir un Producto</a></li>
+                                                <li ><a href="#">Añadir Categoria</a></li>
+                                                <li ><a href="#">New Admin</a></li>
+                                                <li ><a href="#">Ordenes</a></li>
+                                                <li ><a href="#">Inventario</a></li>
+                                                <li ><a href="#">Reportes</a></li>													
+                                            </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                <% } %>
+                <% if(!VerAd) { %>
+                <div class="col-lg-9 col-12">
+                    <div class="menu-area">
+                        <!-- Main Menu -->
+                        <nav class="navbar navbar-expand-lg">
+                            <div class="navbar-collapse">
+                                <div class="nav-inner">
+                                    <ul class="nav main-menu menu navbar-nav">
+                                        <li class="active"><a href="/home">Home</a></li>
+                                        <% for (let i=0; i < CantC ; i++) { %>
+                                        <li ><a href="#"><%= DCate[i].nombre %></a></li>
+                                        <% } %>																									
+                                    </ul>												
+                                </div>											
+                            </div>										
+                        </nav>
+                        <!--/ End Main Menu -->
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ End Header Inner -->

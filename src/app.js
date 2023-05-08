@@ -21,6 +21,7 @@ import './lib/passport.js'
 import router from "./routes/usuario.routes.js";
 import prod from "./routes/Producto.js";
 import carrito from "./routes/carrito.js";
+import helpers from "./lib/helpers.js";
 
 // import {
 //     DB_DATABASE,
@@ -60,10 +61,12 @@ app.use( async (req, res, next) => {
     app.locals.aprobado = req.flash("aprobado");
     app.locals.denegado = req.flash("denegado");
     app.locals.VerA = req.isAuthenticated();
+    app.locals.VerAd = false;
+    
     app.locals.VerP = (!req.isAuthenticated());
     if (req.user) {//pregunta si hay datos en la varible global // si hay, lo mandamos el primer arreglo
         //app.locals.user = req.user[0];
-        
+        app.locals.VerAd = helpers.VRolP(req.user.idrol)
         //app.locals.VerO = helpers.VRolO(req.user[0].idRol)
         //const P = await Listar.Pacientes()
         //const O = await Listar.Odonto()

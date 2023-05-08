@@ -22,13 +22,13 @@ helpers.descriptar = async (contra, Savecontra) => {
 //-----------------------------------------------------------------------
 
 helpers.VRolP = (Rol) => {
-    if(Rol == 3){
+    if(Rol == 1){
         return true
     }
     return false
 }
 helpers.VRolA = (Rol) => {
-    if(Rol == 2){
+    if(Rol == 1){
         return true
     }
     return false
