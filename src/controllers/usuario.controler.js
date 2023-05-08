@@ -56,11 +56,10 @@ export const addUser = async (req,res) => {
         const idRol = 2;        
         const {Usuario, nombre, correo_electronico, contrasena, direccion, telefono} = req.body; // obtengo todos los datps desde el formulario
         const Ncontrasena = await helprs.encriptar(contrasena); // encripto la contraseña
-        await pool.query('INSERT INTO cliente (Usuario, nombre, correo_electronico, contrasena, direccion, telefono, idRol) VALUES($1,$2,$3,$4,$5,$6,$7)', [Usuario, nombre, correo_electronico, Ncontrasena, direccion, telefono, idRol]);// inserto el usuario
-        res.redirect('/')
+        const e = await pool.query('INSERT INTO cliente (Usuario, nombre, correo_electronico, contrasena, direccion, telefono, idRol) VALUES($1,$2,$3,$4,$5,$6,$7)', [Usuario, nombre, correo_electronico, Ncontrasena, direccion, telefono, idRol]);// inserto el usuario
+        res.redirect('/login')
     } catch (e) {
-        console.log(e)
-        req.flash('denegado', 'usuario ocupado')
+        return res.redirect('/form')      
         
     }
 }
