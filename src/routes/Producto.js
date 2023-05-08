@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { logeado, logeadoA, logeadoE, logeadoO, logeadoP} from "../lib/privado.js";
 
-import { FSend, Fcate, Fprod, Render1, Render2, Render3, Render4, Render5, Render6} from "../controllers/usuario.controler.js";
+import { DeleteC, DeleteP, FSend, Fcate, Fprod, RMprod, Render1, Render2, Render3, Render4, Render5, Render6} from "../controllers/usuario.controler.js";
 import {dirname, join} from 'path';
 import {fileURLToPath} from 'url';
 import multer from 'multer';
@@ -20,7 +20,11 @@ export const storage = multer.diskStorage({
 const prod = Router();
 const upload = multer({storage})
 prod.get('/formP', logeadoA, Fprod)
+prod.post('/DeleteP', logeadoA, DeleteP)
+prod.post('/Mprod', logeadoA, RMprod)
+prod.post('/Mcate', logeadoA, DeleteP)
 prod.get('/formC', logeadoA, Fcate)
+prod.post('/DeleteC', logeadoA, DeleteC)
 prod.post('/formP', upload.single("img"), FSend)
 prod.get('/Pulseras',Render1)
 prod.get('/Anillos',Render2)
