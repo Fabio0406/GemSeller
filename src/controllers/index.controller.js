@@ -10,7 +10,7 @@ export const slash = async (req, res) => {
   const Cate = await pool.query("SELECT * FROM categoria")
   const CantC = Cate.rowCount
   const DCate = Cate.rows
-  res.render('index.ejs', { Imagen: "images/logo2.jpg" , Cant , DPro, CantC,DCate });
+  res.render('index.ejs', { Imagen: "images/Logo2.jpg" , Cant , DPro, CantC,DCate });
 };
 
 //para mostrar los imputs de login
