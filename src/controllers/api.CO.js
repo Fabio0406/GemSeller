@@ -6,7 +6,6 @@ export const product = async (req,res) =>{
 }
 
 export const Send = async (req,res) =>{
-
     const fecha = new Date()
     const codi = 1563;
     const pro = await pool.query("INSERT INTO carrito(id_cliente,fecha_compra,total) VALUES($1,$2,$3)",[req.user.usuario,fecha.toLocaleDateString('en-US'),req.body.total])
