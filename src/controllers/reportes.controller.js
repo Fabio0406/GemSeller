@@ -34,7 +34,7 @@ export const generarPDF = async (req, res) => {
     const rows = await pool.query('SELECT * FROM carrito,detalle_carrito,producto WHERE detalle_carrito.id_carrito = carrito.id_carrito and detalle_carrito.id_producto=producto.id_producto');
     console.log(rows.rows)
     let mat = [];
-    rows.forEach((element, index, array) => {
+    rows.rows.forEach((element, index, array) => {
       mat.push([element.id_cliente, element.fecha_compra, element.nombre, element.precio]);
     });
     topdf.body = mat;
