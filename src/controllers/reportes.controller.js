@@ -16,30 +16,30 @@ export const generarPDF = async (req, res) => {
   if (valor == 1) {
     //REPORTE DE Ventas pdf
 
-    topdf.head = ['user', 'nombre', 'correo', 'edad', 'fecha de nacimiento', 'ocupacion'];
-    const [rows] = await pool.query('select user, usuario.nombre, correo, edad, fechaNac, ocupacion.nombre as ocu from usuario, ocupacion where ocupacion.id = idOcupacion;');
+    topdf.head = ['nombre', 'precio', 'descripcion', 'cantidad_disponible', 'categoria'];
+    const rows = await pool.query('SELECT producto.id_producto,producto.nombre,producto.precio,producto.descripcion,inventario.cantidad_disponible,categoria.nombre as categoriaN FROM producto,inventario,categoria where inventario.id_producto = producto.id_producto and producto.id_categoria = categoria.id_categoria');
 
     let mat = [];
-    rows.forEach((element, index, array) => {
-      mat.push([element.user, element.nombre, element.correo, element.edad, element.fechaNac, element.ocu]);
+    rows.rows.forEach((element, index, array) => {
+      mat.push([element.nombre, element.precio, element.descripcion, element.cantidad_disponible, element.categorian]);
     });
     topdf.body = mat;
-    topdf.file = 'Reporte de Ventas.pdf';
-    topdf.titulo = 'Reporte - Ventas Realizadas';
+    topdf.file = 'Reporte de Productos.pdf';
+    topdf.titulo = 'Reporte - Productos';
 
   } else if (valor == 2) {
     //REPORTES DE Envios pdf
 
-    topdf.head = ['usuario', 'nombre', 'sexo', 'edad', 'telefono', 'tutor'];
-    const [rows] = await pool.query('select paciente.usuario, usuario.nombre, paciente.sexo, usuario.edad, paciente.telefono, usuarioTutor as tutor from paciente, usuario where usuario.user = paciente.usuario;');
-
+    topdf.head = ['id_cliente', 'fecha_compra', 'nombre', 'precio'];
+    const rows = await pool.query('SELECT * FROM carrito,detalle_carrito,producto WHERE detalle_carrito.id_carrito = carrito.id_carrito and detalle_carrito.id_producto=producto.id_producto');
+    console.log(rows.rows)
     let mat = [];
     rows.forEach((element, index, array) => {
-      mat.push([element.usuario, element.nombre, element.sexo, element.edad, element.telefono, element.tutor]);
+      mat.push([element.id_cliente, element.fecha_compra, element.nombre, element.precio]);
     });
     topdf.body = mat;
-    topdf.file = 'Reporte de Envios.pdf';
-    topdf.titulo = 'Reporte - Envios en curso';
+    topdf.file = 'Reporte de Ventas.pdf';
+    topdf.titulo = 'Reporte - Ventas';
   } 
-  res.render('reportes/pdf.ejs', topdf);
+  res.render('pdf.ejs', topdf);
 };
