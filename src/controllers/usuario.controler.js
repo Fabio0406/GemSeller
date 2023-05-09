@@ -56,7 +56,6 @@ export const DeleteC = async(req,res) => {
 
 export const FSend = async(req,res) => {
     const {nombre, precio, descripcion, categoria,Cantidad} = req.body
-    console.log(req)
     const imagen = req.file.filename
     await pool.query("INSERT INTO producto (nombre, precio, descripcion, id_categoria, imagen)VALUES ($1,$2,$3,$4,$5)",[nombre, precio, descripcion, categoria,imagen])
     const idcarr= await pool.query("SELECT id_producto FROM producto ORDER BY id_producto DESC LIMIT 1")
